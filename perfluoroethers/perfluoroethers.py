@@ -26,7 +26,10 @@ def get_perfluoroether_forcefield(version=None):
     from foyer import Forcefield
     xml_path = get_perfluoroether_forcefield_path(version)
     ff = Forcefield(xml_path)
-    ff.version = version
+    if version:
+        ff.version = version
+    else:
+        ff.version = CURRENT_VERSION
     ff.xml_path = xml_path
     return ff
 
